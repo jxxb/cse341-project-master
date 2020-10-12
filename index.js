@@ -14,7 +14,29 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const mongoose = require('mongoose');
 const PORT = process.env.PORT || 5000 // So we can run on heroku || (OR) localhost:5000
+
+const cors = require('cors') // Place this with other requires (like 'path' and 'express')
+
+const corsOptions = {
+    origin: "https://pr0ve.herokuapp.com/",
+    optionsSuccessStatus: 200
+};
+
+
+const options = {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    family: 4
+};
+
+const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://jxxb:C5i2ekhQPdXOWIbA@cluster0.jhggg.mongodb.net/test?retryWrites=true&w=majority";
+
+
+
 
 const app = express();
 
@@ -31,7 +53,7 @@ const ta02Routes = require('./routes/team/ta02');
 const ta04Routes = require('./routes/team/ta04'); */
 const shopRoutes = require('./shop/routes/shop');
 const adminRoutes = require('./shop/routes/admin');
-
+app.use(cors(corsOptions));
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.static(path.join(__dirname, 'shop','public')))
    .set('views', [path.join(__dirname, 'views'),path.join(__dirname, 'shop','views')])
@@ -60,4 +82,15 @@ app.use(express.static(path.join(__dirname, 'shop','public')))
      // 404 page
      res.render('pages/404', {title: '404 - Page Not Found', path: req.url})
    })
-   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+   
+   mongoose
+  .connect(
+    MONGODB_URL, options
+  )
+  .then(result => {
+ // This should be your user handling code implement following the course videos
+    app.listen(PORT);
+  })
+  .catch(err => {
+    console.log(err);
+  });
