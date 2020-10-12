@@ -26,7 +26,6 @@ const prove2Routes = require('./routes/prove/prove2.js');
 const prove4Routes = require('./routes/prove/prove4.js');*/
 //team activities
 const ta01Routes = require('./routes/team/ta01');
-
 const ta02Routes = require('./routes/team/ta02');
 /*const ta03Routes = require('./routes/team/ta03'); 
 const ta04Routes = require('./routes/team/ta04'); */
