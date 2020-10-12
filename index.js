@@ -22,14 +22,14 @@ const app = express();
 //prove activities
 const prove1Routes = require('./routes/prove/prove1.js');
 const prove2Routes = require('./routes/prove/prove2.js');
-const prove3Routes = require('./routes/prove/prove3.js');
-const prove4Routes = require('./routes/prove/prove4.js');
+/*const prove3Routes = require('./routes/prove/prove3.js');
+const prove4Routes = require('./routes/prove/prove4.js');*/
 //team activities
 const ta01Routes = require('./routes/team/ta01');
 
 const ta02Routes = require('./routes/team/ta02');
-const ta03Routes = require('./routes/team/ta03'); 
-const ta04Routes = require('./routes/team/ta04'); 
+/*const ta03Routes = require('./routes/team/ta03'); 
+const ta04Routes = require('./routes/team/ta04'); */
 const shopRoutes = require('./shop/routes/shop');
 const adminRoutes = require('./shop/routes/admin');
 

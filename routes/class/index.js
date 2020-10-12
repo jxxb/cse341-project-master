@@ -1,4 +1,4 @@
-const clas = require('express').Router();
+/*const clas = require('express').Router();
 
 clas
       .use('./01', require('./ta01'))
@@ -8,4 +8,4 @@ clas
             path:'/class'});
       })
 
-module.exports = routes;
+module.exports = routes;*/

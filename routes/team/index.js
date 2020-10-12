@@ -1,4 +1,4 @@
-const routes = require('express').Router();
+/*const routes = require('express').Router();
 
 routes
       .use('./01', require('./ta01'))
@@ -11,4 +11,4 @@ routes
             path:'/team'});
       })
 
-module.exports = routes;
+module.exports = routes;*/
