@@ -1,4 +1,4 @@
-const routes = require('express').Router();
+/*const routes = require('express').Router();
 
 const clas = require('./class');
 const team = require('./team');
@@ -15,4 +15,4 @@ routes
       .use((req,res,next) => {
          res.render('pages/404', {title: '404 = Page Not Found', path:req.url})
       })
-module.exports = routes;
+module.exports = routes;*/
