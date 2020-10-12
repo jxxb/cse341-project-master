@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../includes/header.ejs %>
+</head>
+<style>
+  button, #mn {
+    color: black;
+  }
+
+  h1 {
+    padding: 1rem 4rem;
+  }
+
+  p {
+    color: orangered;
+    font-family:"Scala-Sans";
+    font-size: 20px;
+    padding: 1rem 7rem;
+  }
+</style>
+<body>
+  <% include ../includes/nav.ejs %>
+<div class="jumbotron text-center">
+  <div class="container">
+    <h1><%= title %></h1>
+  </div>
+</div>
+<div class="container"> 
+  <form action="/ta02/addUser" method="POST">
+        <label for="newUser">New Username</label><br>
+        <input type="text" name="newUser">
+        <button type="submit">Add User</button>
+     </form>
+    <br>
+     <form action="/ta02/remUser" method="POST">
+      <label for="delUser">Delete Username</label><br>
+      <input type="text" name="delUser">
+      <button type="submit">Delete User</button>
+   </form>
+</div>
+<div>
+  <h1>Current Users</h1>
+  <% for (user of users) { %>
+     <p><%= user %></p>
+     <% if user === user} %>
+</div>
+</body>
+</html>

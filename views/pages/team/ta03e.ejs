@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Team Activity 03</title>
+</head>
+<body>
+   <div>
+      <% for(let i=0; i < data.length; i++) { %>
+
+     
+      <label>Name</label>
+      <h4><% data[i].name %></h4>
+      <br>
+      <label>Description</label>
+      <h5><% data[i].description %></h4>
+      <br>
+      <img src="<%= data[i].imageUrl %>">
+      <br>
+      <label>Price</label>
+      <h5><% data[i].price %></h4>
+      <% } %>
+   </div>
+</body>
+</html>

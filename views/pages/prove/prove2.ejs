@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Book Club</title>
+   <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+   <h1><%= mTitle %></h1>
+   <form action="/add" method="POST">
+      <label for="nBook">Book Title:</label><br>
+      <input type="text" name="nBook"><br><br>
+      <label for="auth">Author:</label><br>
+      <input type="text" name="nAuth"><br><br>
+      <label for="nSum">Summary:</label><br>
+      <input type="text" name="nSum"><br><br>
+      <button type="submit">Add Book</button>
+   </form><br><br>
+   <h1>Book List</h1>
+   <% for (book of books) { %>
+      <p><b>Title: </b><%= book.title %></p>
+      <p><b>Author: </b><%= book.author %></p>
+      <p><b>Summary: </b><%= book.summary %></p><br>   
+   <% } %>
+</body>
+</html>

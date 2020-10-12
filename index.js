@@ -20,16 +20,22 @@ const app = express();
 
 // Route setup. You can implement more in the future!
 //prove activities
-const prove1Routes = require('./routes/prove1.js');
+const prove1Routes = require('./routes/prove/prove1.js');
+const prove2Routes = require('./routes/prove/prove2.js');
+const prove3Routes = require('./routes/prove/prove3.js');
+const prove4Routes = require('./routes/prove/prove4.js');
 //team activities
-const ta01Routes = require('./routes/ta01');
+const ta01Routes = require('./routes/team/ta01');
 
-const ta02Routes = require('./routes/ta02');
-const ta03Routes = require('./routes/ta03'); 
-const ta04Routes = require('./routes/ta04'); 
+const ta02Routes = require('./routes/team/ta02');
+const ta03Routes = require('./routes/team/ta03'); 
+const ta04Routes = require('./routes/team/ta04'); 
+const shopRoutes = require('./shop/routes/shop');
+const adminRoutes = require('./shop/routes/admin');
 
 app.use(express.static(path.join(__dirname, 'public')))
-   .set('views', path.join(__dirname, 'views'))
+app.use(express.static(path.join(__dirname, 'shop','public')))
+   .set('views', [path.join(__dirname, 'views'),path.join(__dirname, 'shop','views')])
    .set('view engine', 'ejs')
    // For view engine as Pug
    //.set('view engine', 'pug') // For view engine as PUG. 
@@ -38,10 +44,15 @@ app.use(express.static(path.join(__dirname, 'public')))
    //.set('view engine', 'hbs')
    .use(bodyParser({extended: false})) // For parsing the body of a POST
    .use('/prove1', prove1Routes)
+   .use('/prove2', prove2Routes)
+   /*.use('/prove3', prove3Routes)
+   .use('/prove4', prove4Routes)*/
    .use('/ta01', ta01Routes)
    .use('/ta02', ta02Routes) 
-   .use('/ta03', ta03Routes) 
-   .use('/ta04', ta04Routes)
+   /*.use('/ta03', ta03Routes) 
+   .use('/ta04', ta04Routes)*/
+   .use('/shop',shopRoutes)
+   .use('/admin',adminRoutes)
    .get('/', (req, res, next) => {
      // This is the primary index, always handled last. 
      res.render('pages/index', {title: 'Welcome to my CSE341 repo', path: '/'});

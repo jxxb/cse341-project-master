@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/',(req, res, next) => {
-    res.render('pages/pr1/form', { 
+    res.render('pages/prove/form1', { 
         title: 'Prove Assignment 01', 
         path: '/pr1', // For pug, EJS 
         activeTA03: true, // For HBS
@@ -12,14 +12,11 @@ router.get('/',(req, res, next) => {
 
 router.post('/submit',(req, res, next) => {
    console.log(req.body);
-   res.render('pages/pr1/display', { 
+   res.render('pages/prove/display1', { 
        title: 'Prove Assignment 01', 
        path: '/pr1', // For pug, EJS 
        activeTA03: true, // For HBS
        contentCSS: true, // For HBS
-       fn: req.body.fn,
-       ln: req.body.ln
-
    });
 });
 
