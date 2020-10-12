@@ -1,0 +1,18 @@
+After completing the assignment, be sure to push to Github. You do not have to worry about pushing to Heroku this week.
+Please answer the questions in this text file and submit it to I-Learn.
+
+1. https://github.com/jxxb/cse341-project-master
+
+2. I noticed there wasn't a #2 right here so I wanted to take this opportunity to thank you for the way you are preparing us students at BYU-I for our future careers.  I want to gain as much as I can from these classes.  Please let me know how I can change and become a more effective or helpful students as I go throughout this class!  Thank you again!
+
+3. Prove1.js is linked to the CSE341 repo website and can be found at localhost:5000/prove1.  At the address, form.ejs shows two input fields for first and last name.  Once the form is submitted, it displays the result to the user from the file display.ejs.
+
+4. All pieces are working in accordance with Prove01's expectations
+
+5. I learned that this is one of the ways that Node.js/Javascript work together, and it feels so much simplier than when I had to do something like this in PHP.
+
+6. Honestly, the video you send really helped me understand things a lot better.  I started programming when I started college here last year and so many things are brand new to me. I am not at a stage where I can figure out how to use code like <%= variable %>.  I think if you continue being as diligent to helping students like me in the way you did this week, I can learn a lot more.  If I can figure it out on my own, I will not hesitate to do the research and study on my own.  However, more often than not, I struggle figuring it out all out all by myself.  Thank you for your help, I really appreciate it!
+
+7.  5 - Shows creativity and excels above and beyond requirements
+
+8. I thought about simple ways I could make this assignment my own, I had two input boxes and a submit button so I made the input fields into username and password until I realized that practically you don't want to have your password be displayed.  I changed it to say first and last name and instead of coding Submit, or Send into the submit button, I added my own creative spin on things and used the term "Send it" to name the button.
