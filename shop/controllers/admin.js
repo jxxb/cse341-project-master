@@ -16,7 +16,7 @@ exports.postAddProduct = (req,res,next) => {
       
       const product = new Product(null,title,imgurl,descr,price);
       product.save();
-   res.redirect('/');
+   res.redirect('/shop');
 };
 
 exports.getEditProduct = (req, res, next) => {

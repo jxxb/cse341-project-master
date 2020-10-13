@@ -49,7 +49,7 @@ module.exports = class Product {
       });
    }
 
-   deleteById(id) {
+   static deleteById(id) {
       getFileProds(products => {
          const product = products.find(prod => prod.id === id);
          const updatedProducts = products.filter(prod => prod.id !== id);
@@ -58,11 +58,9 @@ module.exports = class Product {
                Cart.deleteProd(id, product.price);
             }
          });
-         cb(product);
+         //cb(product);
       });
    }
-
-   
 
    static fetchAll(cb) {
      getFileProds(cb);

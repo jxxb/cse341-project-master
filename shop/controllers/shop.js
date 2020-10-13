@@ -59,7 +59,7 @@ exports.postCart = (req,res,next) => {
   Product.findById(prodId, (product) => {
    Cart.addProduct(prodId, product.price);
   });
-  res.redirect('/cart');
+  res.redirect('/shop/cart');
 };
 
 exports.getOrders = (req,res,next) => {
@@ -71,6 +71,10 @@ exports.getOrders = (req,res,next) => {
 
 exports.postCartDelProd = (req,res,next) => {
    const prodId = req.body.productId;
+   Product.findById(prodId, (product) => {
+      Cart.deleteProd(prodId, product.price);
+      res.redirect('/shop/cart');
+   });
 };
 
 exports.getCheckout = (req, res, next) => {

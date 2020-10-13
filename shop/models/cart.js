@@ -45,13 +45,17 @@ module.exports = class Cart {
          }
          const updatedCart = {...JSON.parse(fileContent)};
          const product = updatedCart.products.find(prod => prod.id === id);
+         if(!product) {
+            return;
+         }
          const prodQty = product.qty;
          updatedCart.products = updatedCart.products.filter(
             prod => prod.id !== id
             );
-         updatedCart.totalPrice = updatedCart.totalPrice - prodPrice * prodQty;
+         updatedCart.totalPrice =
+          updatedCart.totalPrice - prodPrice * prodQty;
 
-         fs.writeFile(p, JSON.stringify(cart), err => {
+         fs.writeFile(p, JSON.stringify(updatedCart), err => {
             console.log(err);
          });
       });
