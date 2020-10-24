@@ -7,6 +7,7 @@ exports.getProducts = (req, res, next) => {
          prods: products, 
          pageTitle: 'All Products', 
          path:'/products', 
+         isAuth: req.isLoggedIn
       });
    });
 };
@@ -17,7 +18,8 @@ exports.getProduct = (req, res, next) => {
       res.render('shop/prodetail', {
          product: product,
           pageTitle: product.title,
-          path: '/products'
+          path: '/products',
+          isAuth: req.isLoggedIn
          });
    });
 
@@ -29,7 +31,7 @@ exports.getIndex = (req, res, next) => {
          prods: products, 
          pageTitle: 'Shop', 
          path:'/', 
-
+         isAuth: req.isLoggedIn
       });
    });
 };
@@ -47,7 +49,8 @@ exports.getCart = (req,res,next) => {
          res.render('shop/cart', { 
             pageTitle: 'Your Cart', 
             path:'/cart', 
-            products: cartProducts
+            products: cartProducts,
+            isAuth: req.isLoggedIn
          });
       });
    });
@@ -66,6 +69,7 @@ exports.getOrders = (req,res,next) => {
    res.render('shop/orders', { 
       pageTitle: 'Your Orders', 
       path:'/orders', 
+      isAuth: req.isLoggedIn
    });
 };
 

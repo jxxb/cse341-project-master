@@ -15,22 +15,27 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
+const session = require('express-session');
+const mongoConnect = require('./shop/util/database');
+
+const MongoDBStore = require('connect-mongodb-session')(session);
+
 const PORT = process.env.PORT || 5000 // So we can run on heroku || (OR) localhost:5000
 
 const cors = require('cors') // Place this with other requires (like 'path' and 'express')
 
 const corsOptions = {
-    origin: "https://pr0ve.herokuapp.com/",
-    optionsSuccessStatus: 200
+  origin: "https://pr0ve.herokuapp.com/",
+  optionsSuccessStatus: 200
 };
 
 
 const options = {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    family: 4
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  family: 4
 };
 
 const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://jxxb:C5i2ekhQPdXOWIbA@cluster0.jhggg.mongodb.net/test?retryWrites=true&w=majority";
@@ -39,7 +44,10 @@ const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://jxxb:C5i2ekhQPdXOW
 
 
 const app = express();
-
+const store = new MongoDBStore({
+  uri: MONGODB_URL,
+  collection: 'sessions', 
+});
 // Route setup. You can implement more in the future!
 //prove activities
 const prove1Routes = require('./routes/prove/prove1.js');
@@ -51,13 +59,26 @@ const ta01Routes = require('./routes/team/ta01');
 const ta02Routes = require('./routes/team/ta02');
 /*const ta03Routes = require('./routes/team/ta03'); 
 const ta04Routes = require('./routes/team/ta04'); */
-const shopRoutes = require('./shop/routes/shop');
-const adminRoutes = require('./shop/routes/admin');
+// const shopRoutes = require('./shop/routes/shop');
+// const adminRoutes = require('./shop/routes/admin');
+const authRoutes = require('./shop/routes/auth');
+
 app.use(cors(corsOptions));
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.static(path.join(__dirname, 'shop','public')))
+app.use(
+    session({
+    secret: 'my secret',
+    resave: false,
+    saveUninitialized: false,
+    store: store
+  })
+  )
    .set('views', [path.join(__dirname, 'views'),path.join(__dirname, 'shop','views')])
    .set('view engine', 'ejs')
+   .use((req,res,next) => {
+     
+   })
    // For view engine as Pug
    //.set('view engine', 'pug') // For view engine as PUG. 
    // For view engine as hbs (Handlebars)
@@ -72,8 +93,9 @@ app.use(express.static(path.join(__dirname, 'shop','public')))
    .use('/ta02', ta02Routes) 
    /*.use('/ta03', ta03Routes) 
    .use('/ta04', ta04Routes)*/
-   .use('/shop',shopRoutes)
-   .use('/admin',adminRoutes)
+    // .use('/shop',shopRoutes)
+    // .use('/admin',adminRoutes)
+   .use('/auth',authRoutes)
    .get('/', (req, res, next) => {
      // This is the primary index, always handled last. 
      res.render('pages/index', {title: 'Welcome to my CSE341 repo', path: '/'});
@@ -83,14 +105,22 @@ app.use(express.static(path.join(__dirname, 'shop','public')))
      res.render('pages/404', {title: '404 - Page Not Found', path: req.url})
    })
    
+   
    mongoose
   .connect(
     MONGODB_URL, options
   )
   .then(result => {
  // This should be your user handling code implement following the course videos
-    app.listen(PORT);
+    app.listen(PORT,()=>{
+      console.log("Connected to dB!")
+    });
   })
   .catch(err => {
     console.log(err);
+  });
+
+  mongoConnect((client) => {
+    console.log(client);
+    app.listen(5000);
   });
