@@ -16,7 +16,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
 const session = require('express-session');
-const mongoConnect = require('./shop/util/database');
+//const mongoConnect = require('./shop/util/database');
 
 const MongoDBStore = require('connect-mongodb-session')(session);
 
@@ -29,7 +29,6 @@ const corsOptions = {
   optionsSuccessStatus: 200
 };
 
-
 const options = {
   useUnifiedTopology: true,
   useNewUrlParser: true,
@@ -39,9 +38,6 @@ const options = {
 };
 
 const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://jxxb:C5i2ekhQPdXOWIbA@cluster0.jhggg.mongodb.net/test?retryWrites=true&w=majority";
-
-
-
 
 const app = express();
 const store = new MongoDBStore({
@@ -59,8 +55,8 @@ const ta01Routes = require('./routes/team/ta01');
 const ta02Routes = require('./routes/team/ta02');
 /*const ta03Routes = require('./routes/team/ta03'); 
 const ta04Routes = require('./routes/team/ta04'); */
-// const shopRoutes = require('./shop/routes/shop');
-// const adminRoutes = require('./shop/routes/admin');
+const shopRoutes = require('./shop/routes/shop');
+const adminRoutes = require('./shop/routes/admin');
 const authRoutes = require('./shop/routes/auth');
 
 app.use(cors(corsOptions));
@@ -93,8 +89,8 @@ app.use(
    .use('/ta02', ta02Routes) 
    /*.use('/ta03', ta03Routes) 
    .use('/ta04', ta04Routes)*/
-    // .use('/shop',shopRoutes)
-    // .use('/admin',adminRoutes)
+    .use('/shop',shopRoutes)
+    .use('/admin',adminRoutes)
    .use('/auth',authRoutes)
    .get('/', (req, res, next) => {
      // This is the primary index, always handled last. 
@@ -104,7 +100,6 @@ app.use(
      // 404 page
      res.render('pages/404', {title: '404 - Page Not Found', path: req.url})
    })
-   
    
    mongoose
   .connect(
@@ -120,7 +115,7 @@ app.use(
     console.log(err);
   });
 
-  mongoConnect((client) => {
-    console.log(client);
-    app.listen(5000);
-  });
+  // mongoConnect((client) => {
+  //   console.log(client);
+  //   app.listen(5000);
+  // });

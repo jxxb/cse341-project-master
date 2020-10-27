@@ -11,17 +11,20 @@
             <% for (let product of prods) { %>
             <article class="card.product-item">
                   <header class="card__header">
-                     <h1 class="product__title"><%= product.title %></h1> 
+                     <h1 class="product__title">
+                        <%= product.title %></h1> 
                   </header>
                   <div class="card__image">
-                     <img src="<%= product.imgurl %>", alt="<%= product.title %>")>
+                     <img src="<%= product.imgurl %>" alt="<%= product.title %>">
                   </div>
                   <div class="card__content">
-                     <h2 class="product__price">$<%= product.price %></h2> 
-                     <p class="product_description"><%= product.descr %></p> 
+                     <h2 class="product__price">$
+                        <%= product.price %></h2> 
+                     <p class="product_description">
+                        <%= product.descr %></p> 
                   </div> 
                   <div class="card__actions">
-                     <a href="/shop/products/<%= product.id %>" class="btn">Details</a>
+                     <a href="/shop/products/<%= product._id %>" class="btn">Details</a>
                      <%- include('../includes/addcart.ejs', {product: product}) %>
                      </form>
                   </div>
