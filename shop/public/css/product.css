@@ -50,3 +50,8 @@ button:active {
       background-color: #215b8a;
       color: white;
    }
+
+.form-control input.invalid,
+.form-control textarea.invalid {
+   border-color: red;
+}

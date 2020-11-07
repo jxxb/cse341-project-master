@@ -9,12 +9,13 @@ exports.getProducts = (req, res, next) => {
          prods: products, 
          pageTitle: 'All Products', 
          path:'/products', 
-         isAuth: req.isLoggedIn
       });
    })
    .catch(err => {
-      console.log(err);
-   }); 
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      return next(error);
+   });
 };
 
 exports.getProduct = (req, res, next) => {
@@ -25,10 +26,13 @@ exports.getProduct = (req, res, next) => {
          product: product,
          pageTitle: product.title,
          path: '/products',
-         isAuth: req.isLoggedIn
          });
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+         const error = new Error(err);
+         error.httpStatusCode = 500;
+         return next(error);
+      });
 };
 
 exports.getIndex = (req, res, next) => {
@@ -38,11 +42,12 @@ exports.getIndex = (req, res, next) => {
             prods: products, 
             pageTitle: 'Shop', 
             path:'/', 
-            isAuth: req.isLoggedIn
          });
       })
       .catch(err => {
-         console.log(err)
+         const error = new Error(err);
+         error.httpStatusCode = 500;
+         return next(error);
       });
 };
 
@@ -56,10 +61,13 @@ exports.getCart = (req,res,next) => {
             pageTitle: 'Your Cart', 
             path:'/cart', 
             products: cartProducts,
-            isAuth: req.isLoggedIn
          });
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+         const error = new Error(err);
+         error.httpStatusCode = 500;
+         return next(error);
+      });
 };
 
 exports.postCart = (req,res,next) => {
@@ -81,7 +89,11 @@ exports.postCartDelProd = (req,res,next) => {
       .then(result => {
          res.redirect('/shop/cart');
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+         const error = new Error(err);
+         error.httpStatusCode = 500;
+         return next(error);
+      });
 };
 
 exports.postOrder = (req,res,next) => {
@@ -91,7 +103,7 @@ exports.postOrder = (req,res,next) => {
    .then(user => {
       const order = new Order({
          user: {
-            name: req.user.name,
+            email: req.user.email,
             userId: req.user
          },
          products: products
@@ -104,7 +116,11 @@ exports.postOrder = (req,res,next) => {
    .then(() => {
       res.redirect('/orders');
    })
-   .catch(err => console.log(err));
+   .catch(err => {
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      return next(error);
+   });
 };
 
 exports.getOrders = (req,res,next) => {
@@ -114,8 +130,11 @@ exports.getOrders = (req,res,next) => {
          pageTitle: 'Your Orders', 
          path:'/orders', 
          orders: orders,
-         isAuth: req.isLoggedIn
       });
    })
-   .catch(err => console.log(err));
+   .catch(err => {
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      return next(error);
+   });
 };

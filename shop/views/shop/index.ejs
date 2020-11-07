@@ -3,7 +3,7 @@
 
 <body>
 <%- include('../includes/nav.ejs') %>
-   </header>
+</header>
 
    <main>
       <% if (prods.length > 0) { %>
@@ -21,7 +21,9 @@
                      <p class="product_description"><%= product.descr %></p> 
                   </div> 
                   <div class="card__actions">
-                     <%- include('../includes/addcart.ejs',{product: product}) %>
+                     <% if (isAuth) { %>
+                        <%- include('../includes/addcart.ejs', {product: product}) %>
+                     <% } %>
                   </div>
             </article>
          <% } %>

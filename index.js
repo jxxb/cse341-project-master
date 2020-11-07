@@ -16,9 +16,12 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
 const session = require('express-session');
-//const mongoConnect = require('./shop/util/database');
-
 const MongoDBStore = require('connect-mongodb-session')(session);
+const csrf = require('csurf');
+const flash = require('connect-flash');
+
+const errorController = require('./shop/controllers/error');
+const User = require('./shop/models/user');
 
 const PORT = process.env.PORT || 5000 // So we can run on heroku || (OR) localhost:5000
 
@@ -44,6 +47,9 @@ const store = new MongoDBStore({
   uri: MONGODB_URL,
   collection: 'sessions', 
 });
+const csrfProtect = csrf();
+
+
 // Route setup. You can implement more in the future!
 //prove activities
 const prove1Routes = require('./routes/prove/prove1.js');
@@ -70,11 +76,37 @@ app.use(
     store: store
   })
   )
+  .use(csrfProtect)
+  .use(flash())
+
+  .use((req,res,next) => {
+    res.locals.isAuth = req.session.isLoggedIn,
+    res.locals.csrf = req.csrfToken();
+    next();
+  })
+  .use((req,res,next) => {
+    //throw new Error('Sync Dummy');
+  if(!req.session.user) {
+    return next();
+  }
+  User.findById(req.session.user._id)
+   .then(user => {
+     if (!user) {
+      return next();
+     }
+      req.user = user;
+      next();
+   })
+   .catch(err => {
+     next(new Error(err));
+   });
+})
+
    .set('views', [path.join(__dirname, 'views'),path.join(__dirname, 'shop','views')])
    .set('view engine', 'ejs')
-   .use((req,res,next) => {
+  //  .use((req,res,next) => {
      
-   })
+  //  })
    // For view engine as Pug
    //.set('view engine', 'pug') // For view engine as PUG. 
    // For view engine as hbs (Handlebars)
@@ -96,11 +128,25 @@ app.use(
      // This is the primary index, always handled last. 
      res.render('pages/index', {title: 'Welcome to my CSE341 repo', path: '/'});
     })
+
+    .get('/500', errorController.get500)
+
    .use((req, res, next) => {
      // 404 page
      res.render('pages/404', {title: '404 - Page Not Found', path: req.url})
    })
-   
+
+   app.use((error, req,res,next) => {
+     //res.status(error.httpStatusCode).render(...);
+    //res.redirect('/500');
+    console.log(error);
+    res.status(500).render('500', {
+      pageTitle: 'Error!',
+      path: '/500',
+      isAuth: req.session.isLoggedIn
+      });
+    })
+
    mongoose
   .connect(
     MONGODB_URL, options
