@@ -76,6 +76,7 @@ app.use(
     store: store
   })
   )
+  .use(bodyParser({extended: false})) // For parsing the body of a POST
   .use(csrfProtect)
   .use(flash())
 
@@ -112,7 +113,7 @@ app.use(
    // For view engine as hbs (Handlebars)
    //.engine('hbs', expressHbs({layoutsDir: 'views/layouts/', defaultLayout: 'main-layout', extname: 'hbs'})) // For handlebars
    //.set('view engine', 'hbs')
-   .use(bodyParser({extended: false})) // For parsing the body of a POST
+   
    .use('/prove1', prove1Routes)
    .use('/prove2', prove2Routes)
    /*.use('/prove3', prove3Routes)

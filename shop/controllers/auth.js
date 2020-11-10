@@ -21,7 +21,7 @@ exports.getLogin = (req,res,next) => {
    }
    res.render('auth/login', { 
       pageTitle: 'Login', 
-      path:'auth/login', 
+      path:'/login', 
       error: message,
       oldInput: {
          email: '',
@@ -40,7 +40,7 @@ exports.getSignup = (req,res,next) => {
    }
    res.render('auth/signup', { 
       pageTitle: 'Signup', 
-      path:'auth/signup', 
+      path:'/signup', 
       error: message,
       oldInput: {
          email:'',
@@ -58,9 +58,9 @@ exports.postLogin = (req,res,next) => {
    const errors = validationResult(req);
    if (!errors.isEmpty()) {
       console.log(errors.array());
-      return res.status(422).render('auth/login', { 
+      return res.status(422).render('/login', { 
          pageTitle: 'Login', 
-         path:'auth/login', 
+         path:'/login', 
          error: errors.array()[0].msg,
          oldInput:{
             email: email,
@@ -73,9 +73,9 @@ exports.postLogin = (req,res,next) => {
    User.findOne({email:email})
    .then(user => {
       if (!user) {
-         return res.status(422).render('auth/login', { 
+         return res.status(422).render('/login', { 
             pageTitle: 'Login', 
-            path:'auth/login', 
+            path:'/login', 
             error: 'Invalid email or password.',
             oldInput:{
                email: email,
@@ -95,9 +95,9 @@ exports.postLogin = (req,res,next) => {
                res.redirect('/shop');
             });
          }
-         return res.status(422).render('auth/login', { 
+         return res.status(422).render('/login', { 
             pageTitle: 'Login', 
-            path:'auth/login', 
+            path:'/login', 
             error: 'Invalid email or password.',
             oldInput:{
                email: email,
@@ -108,7 +108,7 @@ exports.postLogin = (req,res,next) => {
       })
       .catch(err => {
          console.log(err);
-         res.direct('/login');
+         res.redirect('/login');
       });
    })
    .catch(err => {
@@ -127,7 +127,7 @@ exports.postSignup = (req,res,next) => {
       console.log(errors.array());
       return res.status(422).render('auth/signup', { 
          pageTitle: 'Signup', 
-         path:'auth/signup', 
+         path:'/signup', 
          error: errors.array()[0].msg,
          oldInput: {
             email:email,
@@ -149,7 +149,7 @@ exports.postSignup = (req,res,next) => {
          return user.save();
          })
          .then(result => {
-            res.redirect('auth/login');
+            res.redirect('/auth/login');
          })
          .catch(err => {
             const error = new Error(err);

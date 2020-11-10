@@ -60,7 +60,7 @@ exports.getCart = (req,res,next) => {
          res.render('shop/cart', { 
             pageTitle: 'Your Cart', 
             path:'/cart', 
-            products: cartProducts,
+            products: products,
          });
       })
       .catch(err => {
@@ -101,6 +101,9 @@ exports.postOrder = (req,res,next) => {
    .populate('cart.items/productId')
    .execPopulate()
    .then(user => {
+      const products = user.cart.items.map(i=> {
+         return {quantity: i.quantity, product: {...i.productId._doc} };
+      });
       const order = new Order({
          user: {
             email: req.user.email,
@@ -114,7 +117,7 @@ exports.postOrder = (req,res,next) => {
       return req.user.clearCart();
    })
    .then(() => {
-      res.redirect('/orders');
+      res.redirect('/shop/orders');
    })
    .catch(err => {
       const error = new Error(err);
