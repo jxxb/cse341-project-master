@@ -8,19 +8,19 @@ https://pr0ve.herokuapp.com/
 https://github.com/jxxb/cse341-project-master
 
 3. Briefly list and describe the elements of the application that are functioning. 
-All the functionality meets all requirements.
+All of the elements are working correctly and have full functionality.
 
 4. Briefly describe any pieces of the assignment that are not yet working correctly.
-Everything, including with login, signup, logout, etc..., is working.
+Everything works correctly, there is sometimes a lag where you can refresh the screen in order to get the items to display.
 
 5. Briefly describe the "coolest" thing you learned while completing this assignment.
-I think the feeling I got when I could successfully signup, login, and logout without errors was the most exciting thing about this project!  It was really fun to fix actually!
+I think being able to organize the data and understand how to do so was pretty cool!  I'm excited to use this knowledge later in my career.
 
 6. If you could change this assignment to be more effective or helpful, what would you change?
-I would take out the team activities at the beginning so that students have more time to do this assignment.  I struggled figuring out MongoDB.
+I would make this a survey instead of a .txt file.  Then you can get feedback and the assignment turned in in the same way the other survey is recieved.
 
 7. Please select the category you feel best describes your assignment:
    5 - Shows creativity and excels above and beyond requirements
 
 8. Provide a brief justification (1-2 sentences) for selecting that category.
-   I believe I have worked hard and coded this entire project myself.  I have designed it such that it's different from Max's videos and I believe I have been excelling and doing my best creatively in this project.
+   This project has required many hours of learning and help, but I think that it has payed off thus far.  Everything works and it is coehsive with the dropdown menu for the prove assignments.

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+​
+
+<head>
+  <% include ../../includes/header.ejs %>
+</head>
+​
+
+<body style="text-align: center;">
+  <% include ../../includes/nav.ejs %>
+  <div class="jumbotron text-center">
+    <div class="container">
+      <h1><%= mTitle %></h1>
+    </div>
+  </div>
+  <div class="pagination">
+  <% if (products.length > 0) { %>
+  <div class="container">
+    <div class="row">
+      <div class="col-m">
+        <div class="jumbotron jumbotron-fluid itemContainer">
+          <div class="container">
+        <% for(i = currentPage * 10 -10; i < currentPage * 10; i++) { %>
+        
+          <% if (products) %>
+
+
+            <h1 class="display-4"><%= products[i].name %></h1>
+            <img src="<%= products[i].imageUrl %>" style='max-width: 150px' alt="<%= products[i].name %>">
+            <p> <%= products[i].description %> </p>
+            <p><%= products[i].price %></p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <% } else { %>
+  <h2>No Products Found!</h2>
+  <% } %>
+  
+  <hr>
+  <div class="pagination">
+  <% if (currentPage != 1 && previousPage != 1) { %>
+            <a href="/prove08/?page=1">1</a>
+            <% } %>
+            <% if (currentPage != 1 && previousPage != 1 && previousPage != 2) { %>
+            <a href="">...</a>
+            <% } %>
+            <% if (hasPreviousPage) { %>
+            <a href="/prove08/?page=<%= previousPage %>"><%= previousPage %></a>
+            <% } %>
+            <a href="/prove08/?page=<%= currentPage %>" class="active"><%= currentPage %></a>
+            <% if (hasNextPage) { %>
+            <a href="/prove08/?page=<%= nextPage %>"><%= nextPage %></a>
+            <% } %>
+            <% if (currentPage != lastPage && nextPage != lastPage) { %>
+            <a href="">...</a>
+            <a href="/prove08/?page=<%= lastPage %>"><%= lastPage %></a>
+            <% } %>
+    </div>
+  </body>
+</html>

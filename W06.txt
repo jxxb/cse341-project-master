@@ -1,0 +1,26 @@
+After completing the assignment, be sure to push to Github and Heroku.
+Please answer the questions in this text file and submit it to I-Learn.
+
+1. Copy and paste the URL for your web application (e.g., Heroku):
+https://pr0ve.herokuapp.com/
+
+2. Copy and paste the URL for your source code repository (e.g., GitHub):
+https://github.com/jxxb/cse341-project-master
+
+3. Briefly list and describe the elements of the application that are functioning. 
+All the functionality meets all requirements to my understanding.
+
+4. Briefly describe any pieces of the assignment that are not yet working correctly.
+I believe everything is complete with the error handling, authenication, and 500 and 404 pages.
+
+5. Briefly describe the "coolest" thing you learned while completing this assignment.
+I think the coolest thing was the concepts of routing and the MVP set up is starting to make a lot more sense now than it ever was before.  I am grateful for what I have learned generally from this project.
+
+6. If you could change this assignment to be more effective or helpful, what would you change?
+I would probably give an extra week on this assignment.  A stronger encouragement to watch the videos on x2 speed might have been helpful for me.  I thought I was doing the right thing by watching it regularly, but it was not a good idea for me.
+
+7. Please select the category you feel best describes your assignment:
+   5 - Shows creativity and excels above and beyond requirements
+
+8. Provide a brief justification (1-2 sentences) for selecting that category.
+   I believe this project shows my personal creativity because I coded everything myself. I have done everything required of me and I believe I have excelled in this project by trying my best to learn all the concepts given to me.  Although it was really difficult, I am pulling through and I am progressing into a much better and more organized coder.

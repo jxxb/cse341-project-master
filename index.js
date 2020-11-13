@@ -54,6 +54,8 @@ const csrfProtect = csrf();
 //prove activities
 const prove1Routes = require('./routes/prove/prove1.js');
 const prove2Routes = require('./routes/prove/prove2.js');
+const prove08Routes = require('./routes/prove/prove08.js');
+const prove09Routes = require('./routes/prove/prove09.js');
 /*const prove3Routes = require('./routes/prove/prove3.js');
 const prove4Routes = require('./routes/prove/prove4.js');*/
 //team activities
@@ -118,6 +120,8 @@ app.use(
    .use('/prove2', prove2Routes)
    /*.use('/prove3', prove3Routes)
    .use('/prove4', prove4Routes)*/
+   .use('/prove08', prove08Routes)
+   .use('/prove09', prove09Routes)
    .use('/ta01', ta01Routes)
    .use('/ta02', ta02Routes) 
    /*.use('/ta03', ta03Routes) 

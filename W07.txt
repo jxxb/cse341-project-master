@@ -8,19 +8,19 @@ https://pr0ve.herokuapp.com/
 https://github.com/jxxb/cse341-project-master
 
 3. Briefly list and describe the elements of the application that are functioning. 
-All the functionality meets all requirements.
+My projects, including the risk mitigation plan and ecommerce app, arecomplete, along with part of our  group's recipe app working as well.
 
 4. Briefly describe any pieces of the assignment that are not yet working correctly.
-Everything, including with login, signup, logout, etc..., is working.
+I have complete everything and it's working accoriding to plan
 
 5. Briefly describe the "coolest" thing you learned while completing this assignment.
-I think the feeling I got when I could successfully signup, login, and logout without errors was the most exciting thing about this project!  It was really fun to fix actually!
+I think it was coolest seeing my personal mitigation plan was basically a plan to help me remember what is most important which is what the gospel does.  I think that comparison I made was cool to notice and learn about.
 
 6. If you could change this assignment to be more effective or helpful, what would you change?
-I would take out the team activities at the beginning so that students have more time to do this assignment.  I struggled figuring out MongoDB.
+I would maybe take out this assignment to give more time for people like me who were still working on the ecommerce project.  That would have made me a little less worried this semester.
 
 7. Please select the category you feel best describes your assignment:
    5 - Shows creativity and excels above and beyond requirements
 
 8. Provide a brief justification (1-2 sentences) for selecting that category.
-   I believe I have worked hard and coded this entire project myself.  I have designed it such that it's different from Max's videos and I believe I have been excelling and doing my best creatively in this project.
+   I have done my best to make a simple and understandable mitgation plan so that I can be ready for the issues that might arise.  I know that as I follow the plan, I will be able to see clearer and finish upcoming projects successfully.

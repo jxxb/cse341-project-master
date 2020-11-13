@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+​
+
+<head>
+  <% include ../../includes/header.ejs %>
+</head>
+​
+
+<body style="text-align: center;">
+  <% include ../../includes/nav.ejs %>
+  <div class="jumbotron text-center">
+    <div class="container">
+      <h1><%= mTitle %></h1>
+    </div>
+  </div>
+  <div class="pagination">
+  <% if (pokemon.length > 0) { %>
+  <div class="container">
+    <div class="row">
+      <div class="col-m">
+        <div class="jumbotron jumbotron-fluid itemContainer">
+          <div class="container">
+
+        <% for(i =0; i<pokemon.length; i++) { %>
+            <h2><%= pokemon[i] %></h2>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <% } else { %>
+  <h2>No Pokemon Found!</h2>
+  <% } %>
+  
+  <hr>
+  <div class="pagination">
+            <% if (currentPage > 1) { %>
+            <a href="/prove09/?page=<%= previousPage %>"><%= previousPage %></a>
+            <% } %>
+
+            <a href="/prove09/?page=<%= currentPage %>" class="active"><%= currentPage %></a>
+
+            <a href="/prove09/?page=<%= nextPage %>"><%= nextPage %></a>
+    </div>
+  </body>
+</html>
