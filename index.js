@@ -47,7 +47,7 @@ const store = new MongoDBStore({
   uri: MONGODB_URL,
   collection: 'sessions', 
 });
-const csrfProtect = csrf();
+//const csrfProtect = csrf();
 
 
 // Route setup. You can implement more in the future!
@@ -56,6 +56,7 @@ const prove1Routes = require('./routes/prove/prove1.js');
 const prove2Routes = require('./routes/prove/prove2.js');
 const prove08Routes = require('./routes/prove/prove08.js');
 const prove09Routes = require('./routes/prove/prove09.js');
+const prove10Routes = require('./routes/prove/prove10.js');
 /*const prove3Routes = require('./routes/prove/prove3.js');
 const prove4Routes = require('./routes/prove/prove4.js');*/
 //team activities
@@ -67,7 +68,7 @@ const shopRoutes = require('./shop/routes/shop');
 const adminRoutes = require('./shop/routes/admin');
 const authRoutes = require('./shop/routes/auth');
 
-app.use(cors(corsOptions));
+//app.use(cors(corsOptions));
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.static(path.join(__dirname, 'shop','public')))
 app.use(
@@ -78,13 +79,20 @@ app.use(
     store: store
   })
   )
+  .use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
+    next();
+  })
+
   .use(bodyParser({extended: false})) // For parsing the body of a POST
-  .use(csrfProtect)
+  //.use(csrfProtect)
   .use(flash())
 
   .use((req,res,next) => {
     res.locals.isAuth = req.session.isLoggedIn,
-    res.locals.csrf = req.csrfToken();
+    //res.locals.csrf = req.csrfToken();
     next();
   })
   .use((req,res,next) => {
@@ -122,6 +130,7 @@ app.use(
    .use('/prove4', prove4Routes)*/
    .use('/prove08', prove08Routes)
    .use('/prove09', prove09Routes)
+   .use('/prove10', prove10Routes)
    .use('/ta01', ta01Routes)
    .use('/ta02', ta02Routes) 
    /*.use('/ta03', ta03Routes) 
