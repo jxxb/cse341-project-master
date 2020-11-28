@@ -4,7 +4,7 @@ const addButton = document.getElementById('add-button');
 const socket = io();
 
 button.addEventListener('click', async () => {
-   fetch('/prove11/fetchAll').then((res) => {
+   fetch('https://pr0ve.herokuapp.com/prove11/fetchAll').then((res) => {
       return res.json();
    }).then(data => {
       console.log(data);
@@ -25,7 +25,7 @@ addButton.addEventListener('click', async () => {
    const data = {name: name, power: power};
    socket.emit('new name',data);
 
-   fetch('/prove11/insert',{
+   fetch('https://pr0ve.herokuapp.com/prove11/insert',{
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({name: name,power: power})
@@ -44,7 +44,7 @@ addButton.addEventListener('click', async () => {
 });
 
 socket.on('new name', msg => {
-   fetch('/prove11/fetchAll').then((res) => {
+   fetch('https://pr0ve.herokuapp.com/prove11/fetchAll').then((res) => {
       return res.json();
    }).then(data => {
       console.log(data);
