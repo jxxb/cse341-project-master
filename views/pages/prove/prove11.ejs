@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html>
+​
+
 <head>
   <% include ../../includes/header.ejs %>
-  <script src='scripts/prove10.js' defer></script>
+  <script src='/socket.io/socket.io.js'></script>
+  <script src='scripts/prove11.js' defer>
+
+  </script>
 </head>
 ​
+
 <body style="text-align: center;">
   <% include ../../includes/nav.ejs %>
   <div class="jumbotron text-center">
@@ -12,10 +18,14 @@
       <h1><%= mTitle %></h1>
     </div>
   </div>
-<ul id="avengers"></ul> 
+  
+<ul id="avengers"></ul>
+  
 <button id="button">Get Data</button>
+
 <input id="name" type="text">
 <input id="power" type="text">
+
 <button id="add-button">Add Name</button>
-</body>
+  </body>
 </html>

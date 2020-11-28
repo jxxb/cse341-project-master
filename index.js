@@ -57,6 +57,7 @@ const prove2Routes = require('./routes/prove/prove2.js');
 const prove08Routes = require('./routes/prove/prove08.js');
 const prove09Routes = require('./routes/prove/prove09.js');
 const prove10Routes = require('./routes/prove/prove10.js');
+const prove11Routes = require('./routes/prove/prove11.js');
 /*const prove3Routes = require('./routes/prove/prove3.js');
 const prove4Routes = require('./routes/prove/prove4.js');*/
 //team activities
@@ -131,6 +132,7 @@ app.use(
    .use('/prove08', prove08Routes)
    .use('/prove09', prove09Routes)
    .use('/prove10', prove10Routes)
+   .use('/prove11', prove11Routes)
    .use('/ta01', ta01Routes)
    .use('/ta02', ta02Routes) 
    /*.use('/ta03', ta03Routes) 
@@ -167,10 +169,14 @@ app.use(
   )
   .then(result => {
  // This should be your user handling code implement following the course videos
-    app.listen(PORT,()=>{
-      console.log("Connected to dB!")
-    });
-  })
+    const server = app.listen(PORT,()=> console.log(`Connected to ${PORT}`));
+      const io = require('socket.io')(server);
+      io.on('connection', socket => {
+        socket.on('new name', msg => {
+          io.emit('new name', msg);
+        });
+      });
+    })
   .catch(err => {
     console.log(err);
   });

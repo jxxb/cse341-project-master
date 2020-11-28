@@ -1,48 +1,27 @@
 const express = require('express');
-const fs = require('fs');
-const path = require('path');
+const router = express.Router();
+const dummyData = {"avengers":[{"name":"Tony Stark","power":"Smart"}]}
 
-const p = path.join(
-    path.dirname(require.main.filename),
-    'data',
-    'prove10.json'
- );
-
-    const router = express.Router();
-
-    // Path to your JSON file, although it can be hardcoded in this file.
-    const dummyData = require('../../data/prove10.json')
-
-    router.get('/', (req, res, next) => {
-        res.render('pages/prove/prove10', {
-            mTitle: 'Prove 10',
-            path: '/prove/prove10',
-            
-        });
+router.get('/', (req, res, next) => {
+    res.render('pages/prove/prove10', {
+        mTitle: 'Prove 10',
+        path: '/prove/prove10',
     });
+});
 
-    router.get('/fetchAll', (req, res, next) => {
+router.get('/fetchAll', (req, res, next) => {
+    res.json(dummyData);
+});
 
-        let sync = fs.readFileSync(p);
-        sync = JSON.parse(sync);
-        res.json(sync);
-
-    });
-
-    router.post('/insert', (req, res, next) => {
-      console.log(req.body);
-      let sync = fs.readFileSync(p);
-        sync = JSON.parse(sync);
-        sync.avengers.push({
+router.post('/insert', (req, res, next) => {
+    if (!dummyData.avengers.some(i=> {
+        return i.name === req.body.name && i.power === req.body.power;})) {
+            dummyData.avengers.push({
             name: req.body.name,
-        })
-        fs.writeFile(p, JSON.stringify(sync), (err) => {
-            if(err) {
-                throw new Error(err);
-            }
-            console.log('data');
-        }); 
-        next();
-    });
+            power: req.body.power,
+            })
+        };
+res.json(dummyData);
+});
 
 module.exports = router;

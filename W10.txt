@@ -1,0 +1,26 @@
+After completing the assignment, be sure to push to Github and Heroku.
+Please answer the questions in this text file and submit it to I-Learn.
+
+1. Copy and paste the URL for your web application (e.g., Heroku):
+https://pr0ve.herokuapp.com/
+
+2. Copy and paste the URL for your source code repository (e.g., GitHub):
+https://github.com/jxxb/cse341-project-master
+
+3. Briefly list and describe the elements of the application that are functioning. 
+All of the elements are working and are fully functioning.
+
+4. Briefly describe any pieces of the assignment that are not yet working correctly.
+So far, everything works correctly!
+
+5. Briefly describe the "coolest" thing you learned while completing this assignment.
+The coolest thing I learned was how to insert names into the avenger list!  Please give Vova extra credit!  He was the one that really helped me understand how I could do this!
+
+6. If you could change this assignment to be more effective or helpful, what would you change?
+This assignment was very confusing.  I'm grateful Vova was there to help me understand this.  I think having a time where Brother Birch and the TA's can meet to help students understand and code the assignment would be exceptional.
+
+7. Please select the category you feel best describes your assignment:
+   5 - Shows creativity and excels above and beyond requirements
+
+8. Provide a brief justification (1-2 sentences) for selecting that category.
+   I think the program works well and It have a very clean and simple interface and therefore, it excels in it's design from the frontend and from the backend.
